@@ -10,42 +10,43 @@ enum class Compass {N, S, W, E};
 // Write your code here
 class GPS 
 {
-    double latitude;
-    double longitude;
-    Compass latitudeDirection;
-    Compass longitudeDirection;
+  double latiAngle;
+  Compass latiDistance;
+  double longiAngle;
+  Compass longiDistance;
 
-    public:
-      GPS() 
-      {
-          latitude = 0;
-          longitude = 0;
-          latitudeDirection = Compass::N;
-          longitudeDirection = Compass::W;
-      }
-      GPS(double lat, double longt) 
-      {
-          latitude = (lat > 90  lat < 0) ? 0 : lat;
-          longitude = (longt > 180  longt < 0) ? 0 : longt;
-          latitudeDirection = Compass::N;
-          longitudeDirection = Compass::W;
-      }               
-      double getLatitude() 
-      {
-          return latitude;
-      }
-      double getLongitude() 
-      {
-          return longitude;
-      }
-      Compass getLongitudeDirection() 
-      {
-          return longitudeDirection;
-      }
-      Compass getLatitudeDiection() 
-      {
-          return latitudeDirection;
-      }
+  public:
+  GPS(double latiAngle, Compass latiDistance, double longiAngle, Compass longiDistance);
+  GPS()
+  {
+    latiAngle = 0;
+    longiAngle = 0;
+    latiDistance = Compass::N;
+    longiDistance = Compass::W;
+  }
+  GPS(double longiD, double latiD)
+  {
+    latiAngle = (latiD>90) || (latiD<0) ? 0:latiD;
+    latiDistance = Compass::N;
+    longiAngle = (longiD>180) || (longiD<0) ? 0:longiD;
+    longiDistance=Compass::W;
+  }
+  double getLatitude()
+  {
+    return latiAngle;
+  }
+  double getLongitude()
+  {
+    return longiAngle;
+  }
+  Compass getLatitudeDirection()
+  {
+    return latiDistance;
+  }
+  Compass getLongitudeDirection()
+  {
+    return longiDistance;
+  }
 };
 //------------------------------
 //   DO NOT MODIFY TEST CASES
